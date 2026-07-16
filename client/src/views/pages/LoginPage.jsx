@@ -26,13 +26,13 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen bg-slate-200 flex items-center justify-center p-4">
-      <div className="w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl flex">
+      <div className="w-full  max-w-6xl rounded-2xl overflow-hidden shadow-2xl flex">
         {/* Left Illustration Panel */}
         <div className="hidden md:flex md:w-1/2 relative bg-gradient-to-br from-[#f5f0e8] to-[#e8dcc8] flex-col items-center justify-end overflow-hidden">
           {/* Campus road illustration */}
           <div className="absolute inset-0 flex flex-col items-center justify-center">
             {/* Sky */}
-            <div className="absolute top-0 left-0 right-0 h-2/3 bg-gradient-to-b from-[#d4e8d4] to-[#e8f0e8]"></div>
+            <div className="absolute top-0 left-0 right-0 h-2/3 bg-gradient-to-b from-[#d4dee8] to-[#e8f0e8]"></div>
             {/* Building dome */}
             <div className="absolute top-8 left-1/2 -translate-x-1/2 flex flex-col items-center">
               <div className="w-16 h-10 bg-[#c8c0b0] rounded-t-full border-4 border-[#b8b0a0]"></div>
@@ -47,25 +47,9 @@ export default function LoginPage() {
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-16 h-full bg-[#b0a888] opacity-50" style={{clipPath:'polygon(30% 0%, 70% 0%, 100% 100%, 0% 100%)'}}></div>
             </div>
             {/* Car */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
-              <div className="w-20 h-10 bg-gradient-to-b from-[#1a3a1a] to-[#0d1f0d] rounded-t-2xl rounded-b-lg shadow-xl">
-                <div className="flex justify-between px-2 pt-1">
-                  <div className="w-4 h-3 bg-[#14B8A6]/60 rounded-sm"></div>
-                  <div className="w-4 h-3 bg-[#14B8A6]/60 rounded-sm"></div>
-                </div>
-              </div>
-              <div className="flex justify-between px-2 -mt-1">
-                <div className="w-4 h-4 bg-slate-700 rounded-full border-2 border-slate-500"></div>
-                <div className="w-4 h-4 bg-slate-700 rounded-full border-2 border-slate-500"></div>
-              </div>
-            </div>
+            
           </div>
 
-          {/* Overlay text */}
-          <div className="relative z-10 text-center pb-8 px-6">
-            <h2 className="text-2xl font-extrabold text-[#0A1F44] leading-tight">Campus Commute<br/>Reimagined</h2>
-            <p className="text-slate-600 text-sm mt-2">Join thousands of students and faculty sharing rides across campus safely and sustainably.</p>
-          </div>
         </div>
 
         {/* Right Login Panel */}
@@ -82,7 +66,7 @@ export default function LoginPage() {
 
           <div className="relative z-10 p-8 md:p-12 h-full flex flex-col justify-center">
             {/* Logo */}
-            <div className="flex items-center gap-2.5 mb-10">
+            <div className="flex items-center gap-2.5 mb-10 justify-center">
               <img src="/logo.png" alt="logo" className="h-8 w-8 object-contain rounded-md" />
               <span className="font-logo">
                 UniRideSync
@@ -149,7 +133,7 @@ export default function LoginPage() {
                     />
                     Remember me
                   </label>
-                  <a href="#" className="text-sm text-[#2563EB] font-medium hover:underline">Forgot password?</a>
+                  <a href="/forgotpassword" className="text-sm text-[#2563EB] font-medium hover:underline">Forgot password?</a>
                 </div>
 
                 {/* Error */}
