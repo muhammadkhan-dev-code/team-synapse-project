@@ -3,7 +3,7 @@
  * Base URL and helper for making API requests.
  * When backend is ready, simply update BASE_URL.
  */
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/v1';
 
 /**
  * Generic fetch wrapper with auth token support.
