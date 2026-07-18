@@ -1,0 +1,21 @@
+FAIL tests/chatbot/chatbot.service.test.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module 'groq-sdk' from 'tests/chatbot/chatbot.service.test.js'
+
+       6 | jest.mock('../../src/modules/chatbot/chatbot.repository');
+       7 | jest.mock('../../src/modules/rides/ride.repository');
+    >  8 | jest.mock('groq-sdk', () => {
+         |      ^
+       9 |   return jest.fn().mockImplementation(() => {
+      10 |     return {
+      11 |       chat: {
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:895:11)
+      at Object.mock (tests/chatbot/chatbot.service.test.js:8:6)
+
+Test Suites: 1 failed, 1 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        0.69 s
+Ran all test suites matching tests/chatbot/chatbot.service.test.js.

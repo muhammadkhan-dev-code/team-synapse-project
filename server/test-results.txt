@@ -1,0 +1,120 @@
+PASS tests/rides/ride.service.test.js
+PASS tests/messages/message.service.test.js
+PASS tests/requests/request.service.test.js
+  ΓùÅ Console
+
+    console.log
+      Γùç injected env (12) from .env // tip: Γîÿ override existing { override: true }
+
+      at _log (node_modules/dotenv/lib/main.js:131:11)
+
+PASS tests/ratings/rating.service.test.js
+FAIL tests/integration.test.js (19.618 s)
+  ΓùÅ Console
+
+    console.log
+      Γùç injected env (12) from .env // tip: Γîÿ override existing { override: true }
+
+      at _log (node_modules/dotenv/lib/main.js:131:11)
+
+    console.log
+      Downloading MongoDB "8.2.6": 0% (0mb / 781.1mb)[0G
+
+      at MongoBinaryDownload.printDownloadProgress (node_modules/mongodb-memory-server-core/src/util/MongoBinaryDownload.ts:664:15)
+
+    console.log
+      Downloading MongoDB "8.2.6": 0% (0.3mb / 781.1mb)[0G
+
+      at MongoBinaryDownload.printDownloadProgress (node_modules/mongodb-memory-server-core/src/util/MongoBinaryDownload.ts:664:15)
+
+    console.log
+      Downloading MongoDB "8.2.6": 0.1% (0.8mb / 781.1mb)[0G
+
+      at MongoBinaryDownload.printDownloadProgress (node_modules/mongodb-memory-server-core/src/util/MongoBinaryDownload.ts:664:15)
+
+    console.log
+      Downloading MongoDB "8.2.6": 0.2% (1.3mb / 781.1mb)[0G
+
+      at MongoBinaryDownload.printDownloadProgress (node_modules/mongodb-memory-server-core/src/util/MongoBinaryDownload.ts:664:15)
+
+    console.log
+      Downloading MongoDB "8.2.6": 0.2% (1.8mb / 781.1mb)[0G
+
+      at MongoBinaryDownload.printDownloadProgress (node_modules/mongodb-memory-server-core/src/util/MongoBinaryDownload.ts:664:15)
+
+    console.log
+      Downloading MongoDB "8.2.6": 0.3% (2.5mb / 781.1mb)[0G
+
+      at MongoBinaryDownload.printDownloadProgress (node_modules/mongodb-memory-server-core/src/util/MongoBinaryDownload.ts:664:15)
+
+    console.log
+      Downloading MongoDB "8.2.6": 0.4% (3.2mb / 781.1mb)[0G
+
+      at MongoBinaryDownload.printDownloadProgress (node_modules/mongodb-memory-server-core/src/util/MongoBinaryDownload.ts:664:15)
+
+  ΓùÅ Integration Tests (Happy Path) ΓÇ║ Auth - Health Check
+
+    thrown: "Exceeded timeout of 5000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+       6 | const jwt = require('jsonwebtoken');
+       7 |
+    >  8 | beforeAll(async () => {
+         | ^
+       9 |   await connectDb();
+      10 | });
+      11 |
+
+      at Object.beforeAll (tests/integration.test.js:8:1)
+
+  ΓùÅ Integration Tests (Happy Path) ΓÇ║ Auth - Health Check
+
+    thrown: "Exceeded timeout of 5000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      10 | });
+      11 |
+    > 12 | afterEach(async () => {
+         | ^
+      13 |   await clearDb();
+      14 | });
+      15 |
+
+      at Object.afterEach (tests/integration.test.js:12:1)
+
+  ΓùÅ Integration Tests (Happy Path) ΓÇ║ Rides - Create a Ride
+
+    thrown: "Exceeded timeout of 5000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+       6 | const jwt = require('jsonwebtoken');
+       7 |
+    >  8 | beforeAll(async () => {
+         | ^
+       9 |   await connectDb();
+      10 | });
+      11 |
+
+      at Object.beforeAll (tests/integration.test.js:8:1)
+
+  ΓùÅ Integration Tests (Happy Path) ΓÇ║ Rides - Create a Ride
+
+    thrown: "Exceeded timeout of 5000 ms for a hook.
+    Add a timeout value to this test to increase the timeout, if this is a long-running test. See https://jestjs.io/docs/api#testname-fn-timeout."
+
+      10 | });
+      11 |
+    > 12 | afterEach(async () => {
+         | ^
+      13 |   await clearDb();
+      14 | });
+      15 |
+
+      at Object.afterEach (tests/integration.test.js:12:1)
+
+A worker process has failed to exit gracefully and has been force exited. This is likely caused by tests leaking due to improper teardown. Try running with --detectOpenHandles to find leaks. Active timers can also cause this, ensure that .unref() was called on them.
+Test Suites: 1 failed, 4 passed, 5 total
+Tests:       2 failed, 18 passed, 20 total
+Snapshots:   0 total
+Time:        21.289 s
+Ran all test suites.

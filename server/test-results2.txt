@@ -1,0 +1,40 @@
+PASS tests/rides/ride.service.test.js
+PASS tests/messages/message.service.test.js
+PASS tests/requests/request.service.test.js
+  ΓùÅ Console
+
+    console.log
+      Γùç injected env (12) from .env // tip: Γîÿ enable debugging { debug: true }
+
+      at _log (node_modules/dotenv/lib/main.js:131:11)
+
+PASS tests/ratings/rating.service.test.js
+FAIL tests/integration.test.js
+  ΓùÅ Test suite failed to run
+
+    Cannot find module '../../utils/catchAsync' from 'src/modules/ratings/rating.controller.js'
+
+    Require stack:
+      src/modules/ratings/rating.controller.js
+      src/modules/ratings/rating.routes.js
+      src/app.js
+      tests/integration.test.js
+
+      1 | const ratingService = require('./rating.service');
+    > 2 | const catchAsync = require('../../utils/catchAsync');
+        |                    ^
+      3 | const { sendResponse } = require('../../utils/responseHandler');
+      4 |
+      5 | /**
+
+      at Resolver._throwModNotFoundError (node_modules/jest-resolve/build/index.js:895:11)
+      at Object.require (src/modules/ratings/rating.controller.js:2:20)
+      at Object.require (src/modules/ratings/rating.routes.js:4:26)
+      at Object.require (src/app.js:14:22)
+      at Object.require (tests/integration.test.js:2:13)
+
+Test Suites: 1 failed, 4 passed, 5 total
+Tests:       18 passed, 18 total
+Snapshots:   0 total
+Time:        5.134 s
+Ran all test suites.
