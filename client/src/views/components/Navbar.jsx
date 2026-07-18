@@ -83,8 +83,8 @@ export default function Navbar() {
         {/* Left: Brand Logo */}
         <Link to="/" className="flex items-center gap-2.5 font-extrabold text-2xl tracking-tight hover:opacity-90 transition-all">
           <img src="/logo.png" alt="logo" className='h-10 w-10 object-contain rounded-lg' />
-          <span className="font-logo">
-            UniRideSync
+          <span className="bg-white font-serif bg-clip-text text-transparent">
+            UniRide-Sync
           </span>
         </Link>
 

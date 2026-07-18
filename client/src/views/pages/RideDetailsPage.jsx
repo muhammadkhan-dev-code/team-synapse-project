@@ -1,12 +1,14 @@
+import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import {
   ArrowLeft, Share2, MapPin, Clock, Calendar, Users, DollarSign,
-  Star, Car, ShieldCheck, Pencil, XCircle, ChevronRight
+  Star, Car, ShieldCheck, Pencil, XCircle, ChevronRight, MessageSquare
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ParticipantRow from '../components/ParticipantRow';
 import { useRideDetail } from '../../controllers/useRides';
+import { useAuth } from '../../controllers/useAuth';
 
 function InfoCard({ icon, label, value }) {
   return (
@@ -34,6 +36,39 @@ export default function RideDetailsPage() {
   const { id } = useParams();
   const rideId = id || DEFAULT_RIDE_ID;
   const { ride, loading, error, accept, decline, actionLoading } = useRideDetail(rideId);
+  const { user: currentUser } = useAuth();
+
+  const [chatMessages, setChatMessages] = useState([
+    { senderId: 'usr_p01', senderName: 'Maya Chen', text: 'Hi! Let\'s coordinate pickup details.', timestamp: 'Today, 10:15 AM' },
+    { senderId: 'usr_001', senderName: 'Alexander Chen', text: 'Hey there! We will depart from the North Campus Hub main gates.', timestamp: 'Today, 10:18 AM' }
+  ]);
+  const [newMsg, setNewMsg] = useState('');
+
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+    if (!newMsg.trim()) return;
+
+    const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const msg = {
+      senderId: currentUser?.id || 'usr_001',
+      senderName: currentUser?.name || 'You',
+      text: newMsg,
+      timestamp: `Today, ${time}`
+    };
+
+    setChatMessages(prev => [...prev, msg]);
+    setNewMsg('');
+
+    // Simulate passive response after 1 second if driver sent message
+    if (currentUser?.id === 'usr_001') {
+      setTimeout(() => {
+        setChatMessages(prev => [
+          ...prev,
+          { senderId: 'usr_p01', senderName: 'Maya Chen', text: 'Great, thanks for confirming! See you there.', timestamp: `Today, ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}` }
+        ]);
+      }, 1000);
+    }
+  };
 
   const statusStyles = {
     confirmed: 'bg-teal-50 text-[#14B8A6] border border-teal-100',
@@ -115,12 +150,18 @@ export default function RideDetailsPage() {
           {/* Main Content */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             {/* Map Placeholder */}
-            <div className="bg-gradient-to-br from-blue-50 via-teal-50 to-slate-100 rounded-2xl h-64 relative overflow-hidden border border-slate-100 shadow-sm">
+            <div className="rounded-2xl h-64 relative overflow-hidden border border-slate-100 shadow-sm bg-slate-950">
+              <img 
+                src="/uni-0.jpg" 
+                alt="Interactive Map Route" 
+                className="absolute inset-0 w-full h-full object-cover opacity-35"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-900/35 via-teal-900/25 to-slate-900/50"></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-10 h-10 text-[#2563EB] mx-auto mb-2" />
-                  <p className="text-sm font-semibold text-slate-500">Interactive Map</p>
-                  <p className="text-xs text-slate-400 mt-1">Route visualization coming soon</p>
+                <div className="text-center z-10">
+                  <MapPin className="w-10 h-10 text-[#38BDF8] mx-auto mb-2 animate-bounce" />
+                  <p className="text-sm font-bold text-white uppercase tracking-wider">Route Map Visualization</p>
+                  <p className="text-xs text-slate-300 mt-1">Interactive Route Coming Soon</p>
                 </div>
               </div>
               {/* Route overlay */}
@@ -186,6 +227,58 @@ export default function RideDetailsPage() {
                 )}
               </div>
             </div>
+
+            {/* Private Coordination Chat */}
+            {currentUser && (currentUser.id === ride.driver?.id || ride.participants?.some(p => p.user.id === currentUser.id)) ? (
+              <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mt-6">
+                <h2 className="text-lg font-bold text-[#0A1F44] mb-4 flex items-center gap-2">
+                  <MessageSquare className="w-5 h-5 text-[#2563EB]" />
+                  Pickup Coordination Chat
+                </h2>
+                <div className="border border-slate-100 rounded-xl p-4 bg-slate-50 flex flex-col h-72">
+                  <div className="flex-1 overflow-y-auto space-y-3 mb-4 pr-1">
+                    {chatMessages.map((msg, i) => {
+                      const isMe = currentUser && msg.senderId === currentUser.id;
+                      return (
+                        <div key={i} className={`flex flex-col ${isMe ? 'items-end' : 'items-start'}`}>
+                          <div className="flex items-center gap-1.5 mb-0.5">
+                            <span className="text-[10px] font-bold text-[#0A1F44]">{msg.senderName}</span>
+                            <span className="text-[9px] text-slate-400">{msg.timestamp}</span>
+                          </div>
+                          <div className={`px-3 py-2 rounded-2xl text-xs max-w-xs leading-relaxed ${
+                            isMe ? 'bg-[#2563EB] text-white rounded-tr-none shadow-sm' : 'bg-white border border-slate-150 text-[#0A1F44] rounded-tl-none shadow-sm'
+                          }`}>
+                            {msg.text}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  
+                  <form onSubmit={handleSendMessage} className="flex gap-2">
+                    <input
+                      type="text"
+                      value={newMsg}
+                      onChange={(e) => setNewMsg(e.target.value)}
+                      placeholder="Ask about pickup spot, departure details..."
+                      className="flex-1 px-4 py-2.5 text-xs border border-slate-200 rounded-xl bg-white focus:outline-none focus:border-[#2563EB] focus:ring-2 focus:ring-[#2563EB]/15 transition-all text-slate-700 font-medium"
+                    />
+                    <button
+                      type="submit"
+                      className="bg-[#0A1F44] hover:bg-[#0d2a5c] text-white px-5 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition shadow hover:shadow-md cursor-pointer"
+                    >
+                      Send
+                    </button>
+                  </form>
+                </div>
+              </div>
+            ) : (
+              <div className="bg-slate-50 border border-slate-100 rounded-2xl p-6 text-center mt-6">
+                <p className="text-xs text-slate-400 font-medium">
+                  🔒 Pickup coordination chat is private and only available to matched ride participants.
+                </p>
+              </div>
+            )}
           </div>
 
           {/* Right Sidebar */}

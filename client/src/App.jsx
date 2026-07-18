@@ -1,6 +1,8 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import LandingPage from './views/pages/LandingPage'
 import LoginPage from './views/pages/LoginPage'
+import SignupPage from './views/pages/SignupPage'
+import ForgotPasswordPage from './views/pages/ForgotPasswordPage'
 import DashboardPage from './views/pages/DashboardPage'
 import PostRidePage from './views/pages/PostRidePage'
 import ProfilePage from './views/pages/ProfilePage'
@@ -27,7 +29,8 @@ export default function App() {
       {/* Public routes */}
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
+      <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
 
       {/* Protected routes */}
       <Route path="/dashboard" element={

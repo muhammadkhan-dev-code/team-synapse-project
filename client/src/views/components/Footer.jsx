@@ -29,7 +29,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <p className="text-slate-500 text-sm">
-            © 2024 UniRideSync. All rights reserved.
+            © 2026 UniRideSync. All rights reserved.
           </p>
         </div>
       </div>

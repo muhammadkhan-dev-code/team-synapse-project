@@ -2,7 +2,7 @@ const MOCK_PROFILE = {
   id: 'usr_001',
   name: 'Alexander Chen',
   email: 'alexander.chen@university.edu',
-  avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=face',
+  avatar: '',
   rating: 4.9,
   totalReviews: 128,
   totalRides: 86,
