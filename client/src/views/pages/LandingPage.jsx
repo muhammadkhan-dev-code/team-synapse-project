@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Clock, DollarSign, ShieldCheck, ArrowRight, Play, Car, MapPin, MessageSquare } from 'lucide-react';
+import { Clock, DollarSign, ShieldCheck, Play, Car, MapPin, MessageSquare } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -35,9 +35,8 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-slate-100 via-blue-50 to-[#F8FAFC] pt-16 pb-12 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center ">
           <div>
-
             <h1 className="text-4xl md:text-5xl font-extrabold text-[#0A1F44] leading-tight tracking-tight mb-5">
               Never Wait for a<br />Ride Again
             </h1>
@@ -76,25 +75,23 @@ export default function LandingPage() {
 
           {/* Hero Image/Illustration */}
           <div className="hidden md:block">
-            <div className="relative rounded-3xl overflow-hidden bg-slate-950 h-[380px] shadow-2xl flex flex-col justify-end p-8 border border-white/10">
+            <div className="relative rounded-3xl overflow-hidden bg-slate-600 h-[380px]  shadow-2xl flex flex-col justify-end p-8 border border-white/10">
               <img 
                 src="/uni-1.jpg" 
                 alt="UET Lahore Campus Carpool" 
-                className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay"
+                className="absolute inset-0 w-full h-full object-cover opacity-100 mix-blend-overlay"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A1F44] via-[#0A1F44]/40 to-transparent"></div>
               
-              <div className="relative z-10">
-                <span className="text-xs font-bold text-[#14B8A6] uppercase tracking-widest bg-[#14B8A6]/10 border border-[#14B8A6]/30 px-3 py-1 rounded-full inline-block mb-3 backdrop-blur-sm">
-                  UET Lahore Campus Transit
-                </span>
+              <div className="relative z-10 text-center flex flex-col items-center justify-center">
+               
                 <h2 className="text-white text-3xl font-extrabold leading-tight">
                   Safe. Simple. Shared.
                 </h2>
-                <p className="text-slate-200 text-xs mt-2 max-w-sm">
+                <p className="text-slate-200 text-xs mt-2 max-w-sm text-center">
                   Commute sustainably with verified students and faculty leaving UET Lahore campuses.
                 </p>
-                <div className="mt-5 flex gap-2">
+                <div className="mt-5 flex gap-2 text-center justify-center ">
                   {['Verified Cars', 'No Costly Cabs', 'Save CO₂'].map((tag) => (
                     <span key={tag} className="text-[10px] font-bold text-white/95 bg-white/15 backdrop-blur-md px-2.5 py-1.5 rounded-lg border border-white/10">{tag}</span>
                   ))}

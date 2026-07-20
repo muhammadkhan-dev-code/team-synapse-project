@@ -239,3 +239,5 @@ npm run dev
 # 📄 License
 
 This project was developed by **Team Synapse** for a Hackathon and is intended for educational purposes.
+
+# google drive link for the project: [Google Drive Link](https://drive.google.com/drive/folders/1Z5byiagNLHqzBdDWvi3y2w71b5CJh2ql?usp=sharing)
